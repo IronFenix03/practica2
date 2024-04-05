@@ -1,0 +1,75 @@
+package practicavectores2;
+
+import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Vector;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		empleadoej2[] empleado = new empleadoej2[10];
+		Vector<empleadoej2> empleados = new Vector<empleadoej2>();
+
+		System.out.println("\nMenú:");
+		System.out.println("1. Dar de alta un empleado.");
+		System.out.println("2. Fichar horas de un empleado.");
+		System.out.println("3. Salir.");
+		System.out.print("Seleccione una opción: ");
+		int opcion = scanner.nextInt();
+
+		switch (opcion) {
+		case 1:
+			System.out.print("¿Qué tipo de empleado desea dar de alta? (1: Propio, 2: Externo): ");
+			int tipoEmpleado = scanner.nextInt();
+			scanner.nextLine();
+
+			System.out.print("Nombre: ");
+			String nombre = scanner.nextLine();
+			System.out.print("DNI: ");
+			String dni = scanner.nextLine();
+			System.out.print("Dirección: ");
+			String direccion = scanner.nextLine();
+			System.out.print("Teléfono: ");
+			String telefono = scanner.nextLine();
+
+			if (tipoEmpleado == 1) {
+				int numidf = 0;
+				empleados.add(new propio(nombre, dni, direccion, telefono,numidf));
+			} else if (tipoEmpleado == 2) {
+				System.out.print("Empresa de procedencia: ");
+				String empresaProcedencia = scanner.nextLine();
+				int empresa = 0;
+				empleados.add(new externo(nombre, dni, direccion, telefono,empresa));
+			} else {
+				System.out.println("Opción no válida.");
+			}
+			break;
+		case 2:
+            System.out.print("Ingrese el número de empleado: ");
+            int numidf = scanner.nextInt();
+            buscarEmpleado(empleados, numidf);
+            System.out.print("Ingrese el número de horas realizadas: ");
+           
+            
+             
+                    break;
+                }
+
+		}
+	
+
+	public static int buscarEmpleado(Vector<empleadoej2> em, int numidf) {
+		for (int i = 0; i < em.size(); i++) {
+			if (em.get(i).getAleatorio() == numidf) {
+				return i;
+			}
+
+		}
+		return -1;
+	}
+	
+
+}
